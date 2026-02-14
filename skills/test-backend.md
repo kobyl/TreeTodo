@@ -6,7 +6,7 @@ Run the .NET backend test suite and report results.
 
 1. Ensure the solution builds:
    ```bash
-   cd backend && dotnet build --no-restore
+   cd src/backend && dotnet build --no-restore
    ```
 
 2. Run all tests:

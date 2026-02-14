@@ -3,14 +3,14 @@
 ## Agent Roles
 
 ### Backend Agent
-- Owns: `backend/` directory
+- Owns: `src/backend/` directory
 - Responsibilities: .NET solution, API controllers, EF Core data layer, backend tests
-- Should NOT touch: `frontend/` directory
+- Should NOT touch: `src/frontend/` directory
 
 ### Frontend Agent
-- Owns: `frontend/` directory
+- Owns: `src/frontend/` directory
 - Responsibilities: React app, components, hooks, services, frontend tests
-- Should NOT touch: `backend/` directory
+- Should NOT touch: `src/backend/` directory
 
 ## Shared Contract
 

@@ -6,7 +6,7 @@ Run the React frontend test suite and report results.
 
 1. Ensure the project builds:
    ```bash
-   cd frontend && npm run build
+   cd src/frontend && npm run build
    ```
 
 2. Run all tests in single-run mode:

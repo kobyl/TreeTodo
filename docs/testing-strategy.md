@@ -93,7 +93,7 @@ public class TasksControllerTests : IClassFixture<WebApplicationFactory<Program>
 
 ### Running Backend Tests
 ```bash
-cd backend
+cd src/backend
 dotnet test --verbosity normal
 dotnet test --filter "Category=Unit"         # Unit only
 dotnet test --filter "Category=Integration"  # Integration only
@@ -126,7 +126,7 @@ dotnet test --filter "Category=Integration"  # Integration only
 ### Test Structure
 
 ```
-frontend/
+src/frontend/
 ├── src/
 │   ├── components/
 │   │   ├── TaskTree/
@@ -192,7 +192,7 @@ describe('taskApi', () => {
 
 ### Running Frontend Tests
 ```bash
-cd frontend
+cd src/frontend
 npm test                    # Watch mode
 npm run test:run            # Single run (CI)
 npm run test:coverage       # With coverage report

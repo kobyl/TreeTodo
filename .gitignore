@@ -1,0 +1,45 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.db
+*.db-shm
+*.db-wal
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Node / Frontend
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.vite/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Environment / Secrets
+.env
+.env.local
+.env.*.local
+appsettings.Development.json
+
+# Claude Code local settings
+.claude/settings.local.json

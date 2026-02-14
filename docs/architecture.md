@@ -4,41 +4,42 @@
 
 ```
 TreeTodo/
-├── backend/                      # .NET 8 solution
-│   ├── TreeTodo.sln
-│   ├── TreeTodo.Api/             # ASP.NET Core host
-│   │   ├── Controllers/          # REST controllers
-│   │   ├── Middleware/           # Error handling, logging
-│   │   ├── Program.cs           # App entry point, DI registration
-│   │   └── appsettings.json
-│   ├── TreeTodo.Core/            # Domain layer (no infra deps)
-│   │   ├── Models/              # Entity classes
-│   │   ├── DTOs/                # Request/response records
-│   │   ├── Interfaces/          # ITaskRepository, ITaskService
-│   │   └── Enums/               # Priority, etc.
-│   ├── TreeTodo.Data/            # Data access layer
-│   │   ├── AppDbContext.cs
-│   │   ├── Repositories/        # EF Core implementations
-│   │   └── Migrations/
-│   └── TreeTodo.Tests/           # Test project
-│       ├── Unit/                # Repository + service tests
-│       └── Integration/         # Controller/API tests
-├── frontend/                     # React app (Vite)
-│   ├── src/
-│   │   ├── components/          # UI components
-│   │   │   ├── TaskTree/        # Tree rendering
-│   │   │   ├── TaskForm/        # Create/edit form
-│   │   │   └── common/          # Buttons, modals, spinners
-│   │   ├── hooks/               # useTaskApi, useTreeState
-│   │   ├── services/            # api.ts (fetch wrapper)
-│   │   ├── types/               # TypeScript interfaces
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   └── __tests__/               # Test files mirror src/
-├── docs/                         # Project documentation
-├── skills/                       # Claude Code skill files
-├── CLAUDE.md                     # Agent entry point
-└── README.md                     # Human-facing setup guide
+├── src/
+│   ├── backend/                      # .NET 8 solution
+│   │   ├── TreeTodo.sln
+│   │   ├── TreeTodo.Api/             # ASP.NET Core host
+│   │   │   ├── Controllers/          # REST controllers
+│   │   │   ├── Middleware/           # Error handling, logging
+│   │   │   ├── Program.cs           # App entry point, DI registration
+│   │   │   └── appsettings.json
+│   │   ├── TreeTodo.Core/            # Domain layer (no infra deps)
+│   │   │   ├── Models/              # Entity classes
+│   │   │   ├── DTOs/                # Request/response records
+│   │   │   ├── Interfaces/          # ITaskRepository, ITaskService
+│   │   │   └── Enums/               # Priority, etc.
+│   │   ├── TreeTodo.Data/            # Data access layer
+│   │   │   ├── AppDbContext.cs
+│   │   │   ├── Repositories/        # EF Core implementations
+│   │   │   └── Migrations/
+│   │   └── TreeTodo.Tests/           # Test project
+│   │       ├── Unit/                # Repository + service tests
+│   │       └── Integration/         # Controller/API tests
+│   └── frontend/                     # React app (Vite)
+│       ├── src/
+│       │   ├── components/          # UI components
+│       │   │   ├── TaskTree/        # Tree rendering
+│       │   │   ├── TaskForm/        # Create/edit form
+│       │   │   └── common/          # Buttons, modals, spinners
+│       │   ├── hooks/               # useTaskApi, useTreeState
+│       │   ├── services/            # api.ts (fetch wrapper)
+│       │   ├── types/               # TypeScript interfaces
+│       │   ├── App.tsx
+│       │   └── main.tsx
+│       └── src/test/                # Test setup and mocks
+├── docs/                             # Project documentation
+├── skills/                           # Claude Code skill files
+├── CLAUDE.md                         # Agent entry point
+└── README.md                         # Human-facing setup guide
 ```
 
 ## Layer Dependencies
@@ -133,15 +134,15 @@ TreeTodo/
 
 ## Tech Stack Summary
 
-| Layer     | Technology               | Version |
-|-----------|--------------------------|---------|
-| API       | ASP.NET Core             | .NET 8  |
-| ORM       | Entity Framework Core    | 8.x     |
-| Database  | SQLite                   | 3.x     |
-| Frontend  | React + TypeScript       | 18.x    |
-| Bundler   | Vite                     | 5.x     |
-| Tests BE  | xUnit + FluentAssertions | latest  |
-| Tests FE  | Vitest + Testing Library | latest  |
+| Layer     | Technology               | Version  |
+|-----------|--------------------------|----------|
+| API       | ASP.NET Core             | .NET 8   |
+| ORM       | Entity Framework Core    | 8.x      |
+| Database  | SQLite                   | 3.x      |
+| Frontend  | React + TypeScript       | 19.x     |
+| Bundler   | Vite                     | 7.x      |
+| Tests BE  | xUnit + FluentAssertions | latest   |
+| Tests FE  | Vitest + Testing Library | 4.x      |
 
 ## Design Decisions & Trade-offs
 

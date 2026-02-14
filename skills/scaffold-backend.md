@@ -1,39 +1,27 @@
 # Skill: Scaffold Backend
 
-Scaffold the .NET 8 backend solution structure from scratch.
+The baseline .NET 8 solution is already scaffolded in `src/backend/`. This skill documents what exists and what the backend agent needs to implement.
 
-## Steps
+## Already Done (baseline)
 
-1. Create the solution and projects:
-   ```
-   backend/TreeTodo.sln
-   backend/TreeTodo.Api/       (webapi)
-   backend/TreeTodo.Core/      (classlib)
-   backend/TreeTodo.Data/      (classlib)
-   backend/TreeTodo.Tests/     (xunit)
-   ```
+- Solution with 4 projects: Api, Core, Data, Tests
+- Project references wired (clean architecture)
+- NuGet packages installed (EF Core SQLite, FluentAssertions, Mvc.Testing, InMemory)
+- `TodoTask` entity in Core/Models/
+- `Priority` enum in Core/Enums/
+- DTOs in Core/DTOs/: `TaskResponse`, `CreateTaskRequest`, `UpdateTaskRequest`, `ApiResponse<T>`
+- `ITaskRepository` interface in Core/Interfaces/
+- `AppDbContext` in Data/ with entity configuration
+- `Program.cs` with DI, CORS, SQLite, JSON enum converter
 
-2. Add project references following clean architecture:
-   - Api → Core, Data
-   - Data → Core
-   - Tests → Api, Core, Data
+## What to Implement
 
-3. Install NuGet packages:
-   - **Api**: `Microsoft.EntityFrameworkCore.Design`
-   - **Core**: (none — pure domain)
-   - **Data**: `Microsoft.EntityFrameworkCore.Sqlite`
-   - **Tests**: `Microsoft.AspNetCore.Mvc.Testing`, `Microsoft.EntityFrameworkCore.InMemory`, `FluentAssertions`
-
-4. Create the `TodoTask` entity in Core/Models/ per `docs/architecture.md`
-5. Create the `Priority` enum in Core/Enums/
-6. Create `ITaskRepository` interface in Core/Interfaces/
-7. Create `AppDbContext` in Data/ with `DbSet<TodoTask>` and cascade delete config
-8. Create `TaskRepository` implementing `ITaskRepository` in Data/Repositories/
-9. Create DTOs in Core/DTOs/: `TaskResponse`, `CreateTaskRequest`, `UpdateTaskRequest`
-10. Create `TasksController` in Api/Controllers/ with all endpoints from `docs/architecture.md`
-11. Configure DI, SQLite connection, and CORS in `Program.cs`
-12. Create initial EF migration
-13. Write tests for repository and controller
+1. Create `TaskRepository` implementing `ITaskRepository` in Data/Repositories/
+2. Register `ITaskRepository` in DI (`Program.cs`)
+3. Create `TasksController` in Api/Controllers/ with all endpoints from `docs/architecture.md`
+4. Create initial EF migration
+5. Write unit tests for repository (in Tests/Unit/Repositories/)
+6. Write integration tests for controller (in Tests/Integration/Controllers/)
 
 ## Validation
 - `dotnet build` succeeds with zero warnings

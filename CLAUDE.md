@@ -16,8 +16,8 @@ A to-do task management app with tree-structured tasks (parent/child nesting). .
 
 | Skill | When to use |
 |-------|-------------|
-| `skills/scaffold-backend.md` | Setting up the .NET solution from scratch |
-| `skills/scaffold-frontend.md` | Setting up the React/Vite app from scratch |
+| `skills/scaffold-backend.md` | What exists + what to implement in backend |
+| `skills/scaffold-frontend.md` | What exists + what to implement in frontend |
 | `skills/test-backend.md` | Running and fixing .NET tests |
 | `skills/test-frontend.md` | Running and fixing React tests |
 | `skills/api-check.md` | Smoke-testing all API endpoints with curl |
@@ -25,21 +25,21 @@ A to-do task management app with tree-structured tasks (parent/child nesting). .
 
 ## Multi-Agent Setup
 
-Two agents work in parallel:
+Two agents work in parallel via git worktrees:
 
 ### Backend Agent
-- **Owns:** `backend/` directory only
-- **Stack:** .NET 8, EF Core, SQLite, xUnit + FluentAssertions
+- **Owns:** `src/backend/` directory only
+- **Stack:** .NET 8, EF Core 8, SQLite, xUnit + FluentAssertions
 - **Start with:** `skills/scaffold-backend.md`
 - **Test with:** `skills/test-backend.md`
-- Must not touch `frontend/`
+- Must not touch `src/frontend/`
 
 ### Frontend Agent
-- **Owns:** `frontend/` directory only
-- **Stack:** React 18, TypeScript, Vite, Vitest + Testing Library + MSW
+- **Owns:** `src/frontend/` directory only
+- **Stack:** React 19, TypeScript, Vite 7, Vitest 4 + Testing Library + MSW 2
 - **Start with:** `skills/scaffold-frontend.md`
 - **Test with:** `skills/test-frontend.md`
-- Must not touch `backend/`
+- Must not touch `src/backend/`
 
 **Shared contract** lives in `docs/agent-coordination.md` — both agents must match the DTO shapes and endpoint paths defined there.
 
@@ -47,15 +47,15 @@ Two agents work in parallel:
 
 ```bash
 # Backend
-cd backend && dotnet build && dotnet test
-cd backend/TreeTodo.Api && dotnet run        # http://localhost:5175
+cd src/backend && dotnet build && dotnet test
+cd src/backend/TreeTodo.Api && dotnet run        # http://localhost:5175
 
 # Frontend
-cd frontend && npm install && npm run build && npm run test:run
-cd frontend && npm run dev                   # http://localhost:5173
+cd src/frontend && npm install && npm run build && npm run test:run
+cd src/frontend && npm run dev                   # http://localhost:5173
 
 # Full verify
-cd backend && dotnet test && cd ../frontend && npm run test:run
+cd src/backend && dotnet test && cd ../../src/frontend && npm run test:run
 ```
 
 ## Coding Conventions
@@ -74,6 +74,7 @@ cd backend && dotnet test && cd ../frontend && npm run test:run
 - API calls in `services/` only — components never call `fetch`
 - Co-locate tests: `Component.test.tsx` next to `Component.tsx`
 - No external state library — hooks + context for MVP
+- Use `import type` for type-only imports (`verbatimModuleSyntax` enabled)
 
 ### Both
 - Write tests alongside code, not after
