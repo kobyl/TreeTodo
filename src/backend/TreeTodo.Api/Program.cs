@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using TreeTodo.Core.Interfaces;
 using TreeTodo.Data;
+using TreeTodo.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,11 +16,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
         ?? "Data Source=TreeTodo.db"));
 
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.SetIsOriginAllowed(origin => 
+            {
+                var uri = new Uri(origin);
+                return uri.Host == "localhost";
+            })
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
