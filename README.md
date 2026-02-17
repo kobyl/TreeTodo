@@ -106,14 +106,3 @@ See [docs/architecture.md](docs/architecture.md) for the full architecture break
 - **Caching**: No caching layer currently. Add Redis or in-memory caching for read-heavy workloads.
 - **Real-time**: No live updates. Add SignalR for multi-user collaborative task management.
 
-## Future Enhancements
-
-- Authentication and authorization (JWT + ASP.NET Identity)
-- Drag-and-drop task reordering
-- Search and filter UI
-- Tags and labels
-- Due date reminders and notifications
-- Bulk operations (complete all, delete completed)
-- Dark mode
-- Export (JSON/CSV)
-- Real-time sync via SignalR
