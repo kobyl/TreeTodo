@@ -12,16 +12,16 @@ A to-do task management app with tree-structured tasks (parent/child nesting). .
 
 **Read these docs before writing any code.** The architecture doc is the source of truth for API endpoints and data model.
 
-## Skills (in `skills/`)
+## Slash Commands (in `.claude/commands/`)
 
-| Skill | When to use |
-|-------|-------------|
-| `skills/scaffold-backend.md` | What exists + what to implement in backend |
-| `skills/scaffold-frontend.md` | What exists + what to implement in frontend |
-| `skills/test-backend.md` | Running and fixing .NET tests |
-| `skills/test-frontend.md` | Running and fixing React tests |
-| `skills/api-check.md` | Smoke-testing all API endpoints with curl |
-| `skills/verify-all.md` | Full build + test pass across both projects |
+| Command | When to use |
+|---------|-------------|
+| `/scaffold-backend` | What exists + what to implement in backend |
+| `/scaffold-frontend` | What exists + what to implement in frontend |
+| `/test-backend` | Running and fixing .NET tests |
+| `/test-frontend` | Running and fixing React tests |
+| `/api-check` | Smoke-testing all API endpoints with curl |
+| `/verify-all` | Full build + test pass across both projects |
 
 ## Multi-Agent Setup
 
@@ -30,15 +30,15 @@ Two agents work in parallel via git worktrees:
 ### Backend Agent
 - **Owns:** `src/backend/` directory only
 - **Stack:** .NET 8, EF Core 8, SQLite, xUnit + FluentAssertions
-- **Start with:** `skills/scaffold-backend.md`
-- **Test with:** `skills/test-backend.md`
+- **Start with:** `/scaffold-backend`
+- **Test with:** `/test-backend`
 - Must not touch `src/frontend/`
 
 ### Frontend Agent
 - **Owns:** `src/frontend/` directory only
 - **Stack:** React 19, TypeScript, Vite 7, Vitest 4 + Testing Library + MSW 2
-- **Start with:** `skills/scaffold-frontend.md`
-- **Test with:** `skills/test-frontend.md`
+- **Start with:** `/scaffold-frontend`
+- **Test with:** `/test-frontend`
 - Must not touch `src/backend/`
 
 **Shared contract** lives in `docs/agent-coordination.md` — both agents must match the DTO shapes and endpoint paths defined there.
